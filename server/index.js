@@ -9,7 +9,7 @@ const saltRounds = 10;
 const { v4: uuidv4 } = require('uuid');
 
 const PORT = process.env.PORT || 8000;
-
+const BaseURL = process.env.URL || '';
 const app = express();
 
 app.use(cors({
@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
     res.send("hi");
 })
 
-app.post("/register", (req, res) => {
+app.post(BaseURL+"/register", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
     const organisationname = req.body.organisationname;
@@ -123,7 +123,7 @@ app.post("/register", (req, res) => {
 });
 
 
-app.post("/login", (req, res) => {
+app.post(BaseURL+"/login", (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
@@ -148,7 +148,7 @@ app.post("/login", (req, res) => {
     });
 });
 
-app.get("/login", (req, res) => {
+app.get(BaseURL+"/login", (req, res) => {
     if (req.session.user) {
         return res.send({ login: true, user: req.session.user });
     } else {
@@ -156,7 +156,7 @@ app.get("/login", (req, res) => {
     }
 });
 
-app.get('/logout', (req, res) => {
+app.get(BaseURL+'/logout', (req, res) => {
     req.session.destroy((err) => {
       if (err) {
         console.error('Logout error:', err);
@@ -191,7 +191,7 @@ app.get('/logout', (req, res) => {
   });
 
 
-  app.post('/add-site', (req, res) => {
+  app.post(BaseURL+'/add-site', (req, res) => {
     const siteName = req.body.site_name;
     const siteLocation = req.body.site_location;
     //console.log(req.session.user[0]);
@@ -222,7 +222,7 @@ app.get('/logout', (req, res) => {
   
   
  
-app.get('/sites/:organizationId', (req, res) => {
+app.get(BaseURL+'/sites/:organizationId', (req, res) => {
   const organizationId = req.params.organizationId;
 
   // Replace this with your database query to fetch sites based on organization ID
@@ -256,7 +256,7 @@ app.get('/sensors/:siteId', (req, res) => {
 });
 
 
-app.get('/sensor-data/:sensorName/:siteId', (req, res) => {
+app.get(BaseURL+'/sensor-data/:sensorName/:siteId', (req, res) => {
   const sensorName = req.params.sensorName;
   const siteId = req.params.siteId;
 
