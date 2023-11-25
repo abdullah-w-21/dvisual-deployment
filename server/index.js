@@ -122,13 +122,7 @@ app.post("/register", (req, res) => {
     });
 });
 
-app.get('https://dvisual-deployment.vercel.app/login', (req, res) => {
-    if (req.session.user) {
-        return res.send({ login: true, user: req.session.user });
-    } else {
-        return res.send({ login: false });
-    }
-});
+
 
 
 app.post('/login', (req, res) => {
@@ -157,6 +151,13 @@ app.post('/login', (req, res) => {
 });
 
 
+app.get('/login', (req, res) => {
+    if (req.session.user) {
+        return res.send({ login: true, user: req.session.user });
+    } else {
+        return res.send({ login: false });
+    }
+});
 
 app.get('/logout', (req, res) => {
     req.session.destroy((err) => {
