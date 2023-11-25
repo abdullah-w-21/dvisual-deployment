@@ -123,7 +123,7 @@ app.post(BaseURL+"/register", (req, res) => {
 });
 
 
-app.post(BaseURL+"/login", (req, res) => {
+app.post(`${BaseURL}/login`, (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
