@@ -9,7 +9,7 @@ const Navbar = () => {
   useEffect(() => {
     const checkLogin = async () => {
       try {
-        const response = await axios.get('http://localhost:8000/login');
+        const response = await axios.get(`${baseURLL}/login`);
         setLogin(response.data.login);
         setForceRender(prev => !prev); // Force a re-render
       } catch (error) {
