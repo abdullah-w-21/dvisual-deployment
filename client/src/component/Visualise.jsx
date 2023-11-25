@@ -25,7 +25,7 @@ const Visualize = ({ siteId }) => {
   useEffect(() => {
     const fetchSensorNames = async () => {
       try {
-        const response = await axios.get(`http://localhost:8000/sensors/${siteId}`);
+        const response = await axios.get(`${baseURLL}/sensors/${siteId}`);
         setSensorNames(response.data.sensorNames);
       } catch (error) {
         console.error('Error fetching sensor names:', error);
@@ -42,7 +42,7 @@ const Visualize = ({ siteId }) => {
         if (selectedSensor) {
           setLoading(true);
           const response = await axios.get(
-            `http://localhost:8000/sensor-data/${selectedSensor}/${siteId}`
+            `${baseURLL}/sensor-data/${selectedSensor}/${siteId}`
           );
           setSensorData(response.data.sensorData);
         }
