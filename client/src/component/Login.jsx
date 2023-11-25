@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const baseUrl = process.env.URLL || '';
+
 
 const Login = () => {
   const [user, setUser] = useState({
@@ -17,7 +17,7 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    let response = await axios.post(`${baseURLL}/login`, user);
+    let response = await axios.post('https://dvisual-deployment.vercel.app/login', user);
     setShow(response.data.login);
     if (response.data.msg) {
       setMsg(response.data.msg);
@@ -34,7 +34,7 @@ const Login = () => {
 
   useEffect(() => {
     const checkLogin = async () => {
-      let response = await axios.get(`${baseURLL}/login`);
+      let response = await axios.get('https://dvisual-deployment.vercel.app/login');
       if (response.data.user) {
         history.push('/profile');
       }
