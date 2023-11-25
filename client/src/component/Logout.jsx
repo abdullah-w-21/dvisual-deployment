@@ -2,7 +2,7 @@ import React, { useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-const baseUrl = process.env.URLL || '';
+
 
 const Logout = () => {
   const history = useHistory();
@@ -10,7 +10,7 @@ const Logout = () => {
   useEffect(() => {
     const logout = async () => {
       try {
-        await axios.get(`${baseURLL}/logout`);
+        await axios.get('https://dvisual-deployment.vercel.app/logout');
         history.push('/login');
       } catch (error) {
         console.error('Logout error:', error);
