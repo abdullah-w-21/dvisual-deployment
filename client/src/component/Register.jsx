@@ -34,7 +34,7 @@ const Register = () => {
 
   useEffect(() => {
     const checkLogin = async () => {
-      let response = await axios.get('https://dvisual-deployment.vercel.app/signup');
+      let response = await axios.get('https://dvisual-deployment.vercel.app/login');
 
       if (response.data.user) {
         history.push('/profile');
