@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
+const baseUrl = process.env.URLL;
 const Register = () => {
   const [user, setUser] = useState({
     email: '',
