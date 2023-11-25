@@ -8,7 +8,7 @@ const Logout = () => {
   useEffect(() => {
     const logout = async () => {
       try {
-        await axios.get('http://localhost:8000/logout');
+        await axios.get(`${baseURLL}/logout`);
         history.push('/login');
       } catch (error) {
         console.error('Logout error:', error);
