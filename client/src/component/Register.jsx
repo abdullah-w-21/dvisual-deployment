@@ -22,7 +22,7 @@ const Register = () => {
       organisationname: user.organisationname,
     };
 
-    let response = await axios.post('http://localhost:8000/register', userData);
+    let response = await axios.post(`${baseURLL}/register`, userData);
 
     if (response.data.msg) {
       setMsg(response.data.msg);
@@ -33,7 +33,7 @@ const Register = () => {
 
   useEffect(() => {
     const checkLogin = async () => {
-      let response = await axios.get('http://localhost:8000/login');
+      let response = await axios.get(`${baseURLL}/login`);
 
       if (response.data.user) {
         history.push('/profile');
