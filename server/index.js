@@ -122,7 +122,7 @@ app.post("/register", (req, res) => {
     });
 });
 
-app.get("/signup", (req, res) => {
+app.get(`${BaseURL}/signup`, (req, res) => {
     if (req.session.user) {
         return res.send({ login: true, user: req.session.user });
     } else {
