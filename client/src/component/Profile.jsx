@@ -18,7 +18,7 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const loginResponse = await axios.get('https://dvisual-deployment.vercel.app/signup');
+        const loginResponse = await axios.get('https://dvisual-deployment.vercel.app/login');
         setLogin(loginResponse.data.login);
 
         if (loginResponse.data.user) {
@@ -45,7 +45,7 @@ const Profile = () => {
   const handleAddSite = async () => {
     try {
       // Fetch the logged-in user's data
-      const loginResponse = await axios.get('https://dvisual-deployment.vercel.app/signup');
+      const loginResponse = await axios.get('https://dvisual-deployment.vercel.app/login');
       if (!loginResponse.data.user) {
         history.push('/login');
         return;
