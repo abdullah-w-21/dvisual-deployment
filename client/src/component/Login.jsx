@@ -2,6 +2,8 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
+const baseUrl = process.env.URLL;
+
 const Login = () => {
   const [user, setUser] = useState({
     email: '',
@@ -15,7 +17,7 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    let response = await axios.post('http://localhost:8000/login', user);
+    let response = await axios.post(`${baseURLL}/login`, user);
     setShow(response.data.login);
     if (response.data.msg) {
       setMsg(response.data.msg);
@@ -32,7 +34,7 @@ const Login = () => {
 
   useEffect(() => {
     const checkLogin = async () => {
-      let response = await axios.get('http://localhost:8000/login');
+      let response = await axios.get(`${baseURLL}/login`);
       if (response.data.user) {
         history.push('/profile');
       }
