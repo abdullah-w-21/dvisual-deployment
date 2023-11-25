@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import axios from 'axios';
 import { useHistory } from 'react-router-dom';
 
-const baseUrl = process.env.URLL || '';
+
 const Register = () => {
   const [user, setUser] = useState({
     email: '',
@@ -23,7 +23,7 @@ const Register = () => {
       organisationname: user.organisationname,
     };
 
-    let response = await axios.post(`${baseURLL}/register`, userData);
+    let response = await axios.post('https://dvisual-deployment.vercel.app/register', userData);
 
     if (response.data.msg) {
       setMsg(response.data.msg);
@@ -34,7 +34,7 @@ const Register = () => {
 
   useEffect(() => {
     const checkLogin = async () => {
-      let response = await axios.get(`${baseURLL}/login`);
+      let response = await axios.get('https://dvisual-deployment.vercel.app/login');
 
       if (response.data.user) {
         history.push('/profile');
