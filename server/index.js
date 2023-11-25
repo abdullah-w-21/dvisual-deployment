@@ -122,6 +122,14 @@ app.post(BaseURL+"/register", (req, res) => {
     });
 });
 
+app.get(BaseURL+"/login", (req, res) => {
+    if (req.session.user) {
+        return res.send({ login: true, user: req.session.user });
+    } else {
+        return res.send({ login: false });
+    }
+});
+
 
 app.post(`${BaseURL}/login`, (req, res) => {
     const email = req.body.email;
@@ -148,13 +156,7 @@ app.post(`${BaseURL}/login`, (req, res) => {
     });
 });
 
-app.get(BaseURL+"/login", (req, res) => {
-    if (req.session.user) {
-        return res.send({ login: true, user: req.session.user });
-    } else {
-        return res.send({ login: false });
-    }
-});
+
 
 app.get(BaseURL+'/logout', (req, res) => {
     req.session.destroy((err) => {
