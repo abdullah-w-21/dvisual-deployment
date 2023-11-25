@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const baseUrl = process.env.URLL || '';
+
 const Profile = () => {
   const [email, setEmail] = useState('');
   const [organizationName, setOrganizationName] = useState('');
