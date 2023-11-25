@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { NavLink, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-const baseUrl = process.env.URLL;
+const baseUrl = process.env.URLL || '';
 
 const Login = () => {
   const [user, setUser] = useState({
