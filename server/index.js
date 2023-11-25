@@ -131,7 +131,7 @@ app.get(BaseURL+"/signup", (req, res) => {
 });
 
 
-app.post(`${BaseURL}/login`, (req, res) => {
+app.post('/login', (req, res) => {
     const email = req.body.email;
     const password = req.body.password;
 
