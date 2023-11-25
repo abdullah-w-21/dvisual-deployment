@@ -15,6 +15,8 @@ import {
   Cell,
 } from 'recharts';
 
+
+const baseUrl = process.env.URLL;
 const Visualize = ({ siteId }) => {
   const [sensorNames, setSensorNames] = useState([]);
   const [selectedSensor, setSelectedSensor] = useState('');
