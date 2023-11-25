@@ -122,7 +122,7 @@ app.post("/register", (req, res) => {
     });
 });
 
-app.get('https://dvisual-deployment.vercel.app/signup', (req, res) => {
+app.get('https://dvisual-deployment.vercel.app/login', (req, res) => {
     if (req.session.user) {
         return res.send({ login: true, user: req.session.user });
     } else {
