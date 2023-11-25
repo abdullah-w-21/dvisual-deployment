@@ -17,18 +17,18 @@ const Profile = () => {
   useEffect(() => {
     const fetchData = async () => {
       try {
-        const loginResponse = await axios.get('http://localhost:8000/login');
+        const loginResponse = await axios.get(`${baseURLL}/login`);
         setLogin(loginResponse.data.login);
 
         if (loginResponse.data.user) {
           setEmail(loginResponse.data.user[0].email);
 
           // Fetch organization name
-          const organizationResponse = await axios.get(`http://localhost:8000/organization/${loginResponse.data.user[0].id}`);
+          const organizationResponse = await axios.get(`${baseURLL}/organization/${loginResponse.data.user[0].id}`);
           setOrganizationName(organizationResponse.data.organizationname);
 
           // Fetch the list of sites for the logged-in user's organization
-          const sitesResponse = await axios.get(`http://localhost:8000/sites/${loginResponse.data.user[0].organisation_id}`);
+          const sitesResponse = await axios.get(`${baseURLL}/sites/${loginResponse.data.user[0].organisation_id}`);
           setSites(sitesResponse.data.sites);
         } else {
           history.push('/login');
@@ -44,13 +44,13 @@ const Profile = () => {
   const handleAddSite = async () => {
     try {
       // Fetch the logged-in user's data
-      const loginResponse = await axios.get('http://localhost:8000/login');
+      const loginResponse = await axios.get(`${baseURLL}/login`);
       if (!loginResponse.data.user) {
         history.push('/login');
         return;
       }
 
-      const response = await axios.post('http://localhost:8000/add-site', {
+      const response = await axios.post(`${baseURLL}/add-site`, {
         organisation_id: loginResponse.data.user[0].organisation_id,
         site_name: siteName,
         site_location: siteLocation,
@@ -62,7 +62,7 @@ const Profile = () => {
         setSiteLocation('');
         setError('');
         // Fetch the updated list of sites and update the state accordingly
-        const updatedSitesResponse = await axios.get(`http://localhost:8000/sites/${loginResponse.data.user[0].organisation_id}`);
+        const updatedSitesResponse = await axios.get(`${baseURLL}/sites/${loginResponse.data.user[0].organisation_id}`);
         setSites(updatedSitesResponse.data.sites);
       } else {
         setError(response.data.error);
