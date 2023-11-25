@@ -22,8 +22,8 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(session({
     key: "userId",
     secret: "abdullah",
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
 }))
 
 const db = mysql.createConnection({
