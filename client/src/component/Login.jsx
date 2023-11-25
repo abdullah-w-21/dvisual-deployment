@@ -17,7 +17,7 @@ const Login = () => {
 
   const onSubmit = async (e) => {
     e.preventDefault();
-    let response = await axios.post('https://dvisual-deployment.vercel.app/login', user);
+    let response = await axios.post('https://dvisual-deployment.vercel.app/login', user, { withCredentials: true });
     setShow(response.data.login);
     if (response.data.msg) {
       setMsg(response.data.msg);
