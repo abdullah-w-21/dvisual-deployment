@@ -16,7 +16,7 @@ import {
 } from 'recharts';
 
 
-const baseUrl = process.env.URLL || '';
+
 const Visualize = ({ siteId }) => {
   const [sensorNames, setSensorNames] = useState([]);
   const [selectedSensor, setSelectedSensor] = useState('');
@@ -27,7 +27,7 @@ const Visualize = ({ siteId }) => {
   useEffect(() => {
     const fetchSensorNames = async () => {
       try {
-        const response = await axios.get(`${baseURLL}/sensors/${siteId}`);
+        const response = await axios.get(`https://dvisual-deployment.vercel.app/sensors/${siteId}`);
         setSensorNames(response.data.sensorNames);
       } catch (error) {
         console.error('Error fetching sensor names:', error);
@@ -44,7 +44,7 @@ const Visualize = ({ siteId }) => {
         if (selectedSensor) {
           setLoading(true);
           const response = await axios.get(
-            `${baseURLL}/sensor-data/${selectedSensor}/${siteId}`
+            `https://dvisual-deployment.vercel.app/sensor-data/${selectedSensor}/${siteId}`
           );
           setSensorData(response.data.sensorData);
         }
